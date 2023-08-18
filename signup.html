@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit&family=Montserrat:wght@500;700&family=Pacifico&display=swap');
+    </style>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #main {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(19, 0, 39);
+            color: white;
+        }
+
+        #signup-container {
+            width: 50vw;
+            min-height: 25vw;
+            /* background-color: black; */
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-between;
+
+        }
+
+        #sign-up {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3vw;
+            padding: 2vw;
+            width: 100%;
+        }
+
+        #name {
+            display: flex;
+            justify-content: space-between;
+            gap: 2vw;
+            width: 100%;
+        }
+
+        #sign-up input {
+            border: none;
+            font-family: "Poppins";
+            background-color: rgb(182, 182, 182);
+            color: rgb(19, 0, 39);
+            width: 100%;
+            font-family: "Poppins";
+            border-radius: 40px;
+            padding: 1vw;
+            font-size: large;
+            font-weight: 700;
+        }
+
+        #sign-up input::placeholder {
+            color: rgb(77, 77, 77);
+        }
+
+        #sign-up input:focus {
+            outline: none;
+        }
+
+        #sign-up button {
+            font-family: "Poppins";
+            width: 100%;
+            padding: 1vw;
+            font-size: large;
+            font-weight: 700;
+            border-radius: 40px;
+            background-image: linear-gradient(to right, rgb(70, 0, 70), rgb(255, 32, 69));
+            /* border: 1.5px solid purple; */
+            border: none;
+            box-shadow: 2px 4px 0 grey;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: white;
+        }
+
+        #sign-up button:active {
+            transform: translateX(4px) translateY(4px);
+            box-shadow: 0px 0px 0 grey;
+        }
+
+
+
+        h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+
+        }
+    </style>
+    <title>Sign In</title>
+
+</head>
+
+<body>
+    <div id="main">
+        <div id="signup-container">
+            <h2>detail</h2>
+            <div id="sign-up">
+                <div id="name">
+                    <input id="fname" placeholder="First Name" type="text">
+                    <input id="lname" placeholder="Last Name" type="text">
+                </div>
+                <input placeholder="Email" type="email" name="signin-email" id="signup-email">
+                <input placeholder="Password" type="password" name="sign-in" id="signup-password">
+                <button id="signup-btn">Sign up</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        users = [];
+
+        const signUp = document.getElementById('signup-btn');
+
+        signUp.addEventListener('click', signUpUser)
+        function signUpUser() {
+            const firstName = document.getElementById('fname')
+            const lastName = document.getElementById('lname')
+            const email = document.getElementById('signup-email')
+            const password = document.getElementById('signup-password')
+
+            if (firstName.value && lastName.value && password.value && email.value) {
+
+                if (email.value.includes('@')) {
+
+                    if (password.value.length < 8) return alert('Password should contain 8 characters')
+                }
+                else {
+                    alert('Please add valid email')
+                }
+            }
+            else {
+                alert('Please add all information')
+            }
+            const user = {
+                firstName: firstName.value,
+                lastName: lastName.value,
+                email: email.value
+            }
+            console.log(user)
+
+
+            users.push(user)
+            console.log(users)
+        }
+
+    </script>
+</body>
+
+</html>
